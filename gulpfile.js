@@ -3,7 +3,8 @@ const  gulp  = require('gulp'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     sass = require('gulp-sass'),
-    moduleImporter = require('sass-module-importer')
+    moduleImporter = require('sass-module-importer'),
+    rename = require('gulp-rename')
 ; 
 
 function js () {
@@ -15,9 +16,10 @@ function js () {
 }
 
 function css (){
-    return gulp.src('styles/estilo.scss')
+    return gulp.src('styles/style.scss')
     .pipe(sass( { importer: moduleImporter() } ))
-    .pipe(gulp.dest('static/dist'));
+    .pipe(rename('main.css'))
+    .pipe(gulp.dest('static/dist/'));
 }
 
 function watch () {
