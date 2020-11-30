@@ -1,18 +1,24 @@
 const search = document.querySelector('#search');
 const res = document.querySelector('#res');
 
-search.addEventListener('click', () => {   
-    const isResponseOk = (response) => {
-        if (!response.ok) {
-            throw new Error(response.status);
-        }
-        return response.json()
+const isResponseOk = (response) => {
+    if (!response.ok) {
+        throw new Error(response.status);
     }
-      
+    return response.json();
+}
+
+search.addEventListener('click', () => {         
     fetch('/static/users.json')
-        .then(response => isResponseOk(response))
-        .then(data => searchUser(data))
-        .catch(err => res.innerHTML = `ERROR: ${err.message}`);
+        .then(function (response) {
+            return isResponseOk(response);
+        })
+        .then(function (data) {
+            return searchUser(data);
+        })
+        .catch(function (err) {
+            return res.innerHTML = `ERROR: ${err.message}`;
+        });
 });
 
 function searchUser (dataParse) {

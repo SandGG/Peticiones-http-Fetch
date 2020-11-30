@@ -9,20 +9,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var search = document.querySelector('#search');
 var res = document.querySelector('#res');
+
+var isResponseOk = function isResponseOk(response) {
+  if (!response.ok) {
+    throw new Error(response.status);
+  }
+
+  return response.json();
+};
+
 search.addEventListener('click', function () {
-  var isResponseOk = function isResponseOk(response) {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-
-    return response.json();
-  };
-
   fetch('/static/users.json').then(function (response) {
     return isResponseOk(response);
   }).then(function (data) {
     return searchUser(data);
-  }).then(console.log(data))["catch"](function (err) {
+  })["catch"](function (err) {
     return res.innerHTML = "ERROR: ".concat(err.message);
   });
 });
@@ -39,7 +40,8 @@ function searchUser(dataParse) {
       var item = _step.value;
 
       if (nameUser == item.user && passUser == item.pass) {
-        return writeData(item);
+        writeData(item);
+        return;
       } else {
         res.innerHTML = '<p> Data not found </p>';
       }
