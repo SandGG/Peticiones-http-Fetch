@@ -8,17 +8,17 @@ const  gulp  = require('gulp'),
 ; 
 
 function js () {
-    return  browserify('scripts/fetch.js')
+    return  browserify('scripts/main.js')
     .transform(babelify, {presets: ['@babel/preset-env']})
     .bundle()
     .pipe(source('./'))
-    .pipe(gulp.dest('static/dist/main.js'));
+    .pipe(gulp.dest('static/dist/script.js'));
 }
 
 function css (){
-    return gulp.src('styles/style.scss')
+    return gulp.src('styles/main.scss')
     .pipe(sass( { importer: moduleImporter() } ))
-    .pipe(rename('main.css'))
+    .pipe(rename('style.css'))
     .pipe(gulp.dest('static/dist/'));
 }
 
