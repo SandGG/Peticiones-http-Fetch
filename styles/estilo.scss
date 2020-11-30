@@ -1,0 +1,58 @@
+@import 'shared';
+
+body {
+    background: rgb(221, 220, 220);
+}
+
+.container {
+    padding: 12px;
+    background: whitesmoke;
+
+    &__content {
+        padding: 12px;
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+        @extend %text_shared;
+        @extend %input_shared; 
+        padding: 12px;
+    }
+
+    &__label {
+        padding: 12px;
+        @extend %text_shared;
+    }
+
+    &__button {
+        @extend %text_shared;
+        @extend %input_shared;
+        background: rgb(216, 216, 243);
+        width: 20%;
+        cursor: pointer;
+
+        &:hover {
+            font-weight: 700; 
+        }
+    }
+}
+
+.table {
+    @extend %text_shared;
+    background: white;
+    width: 100%;
+    &__tr:hover{
+        background: rgb(228, 228, 228);
+    }
+
+    &__td {
+        height: 50px;
+    }
+}
+

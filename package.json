@@ -1,0 +1,46 @@
+{
+  "name": "Prueba-Servidor",
+  "version": "1.0.0",
+  "description": "1. Crear archivo package.json\r ```scriptshell\r npm init -y\r ```\r 2. Instalar Express\r ```scriptshell\r npm install express --save\r ```\r 3. Crear archivo index.js  \r 4. Copiar en el archivo index.js\r ```javascript\r const express = require('express');\r const app = express();",
+  "main": "fetch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandGG/Peticiones-http-AJAX.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandGG/Peticiones-http-AJAX/issues"
+  },
+  "homepage": "https://github.com/SandGG/Peticiones-http-AJAX#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "gulp": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "gulp-sass": "^4.1.0",
+    "sass-module-importer": "^1.4.0",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "env": {
+    "development": {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "safari >= 7"
+        ]
+      }
+    }
+  }
+}
