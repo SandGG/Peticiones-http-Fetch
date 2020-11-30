@@ -21,16 +21,16 @@ function searchUser (dataParse) {
     
     for (let item of dataParse) {
         if (nameUser == item.user && passUser == item.pass) {
-            return writeData(item)
+            writeData(item);
+            return;
         } else {
             res.innerHTML = '<p> Data not found </p>';
         }
     } 
 }
 
-const writeData = (datos) => {
+function writeData (datos) {
     cleanInputs();
-
     let text = `<table class="table">
                     <tr class="table__tr">
                         <td class="table__td">ID</td>
@@ -47,7 +47,7 @@ const writeData = (datos) => {
                         <td class="table__td">${datos.descrip}</td>
                     </tr>
                 </table>`;   
-    return res.innerHTML = text;
+    res.innerHTML = text;
 }
 
 function cleanInputs () {

@@ -22,7 +22,7 @@ search.addEventListener('click', function () {
     return isResponseOk(response);
   }).then(function (data) {
     return searchUser(data);
-  })["catch"](function (err) {
+  }).then(console.log(data))["catch"](function (err) {
     return res.innerHTML = "ERROR: ".concat(err.message);
   });
 });
@@ -51,11 +51,11 @@ function searchUser(dataParse) {
   }
 }
 
-var writeData = function writeData(datos) {
+function writeData(datos) {
   cleanInputs();
   var text = "<table class=\"table\">\n                    <tr class=\"table__tr\">\n                        <td class=\"table__td\">ID</td>\n                        <td class=\"table__td\">User</td>\n                        <td class=\"table__td\">Password</td>\n                        <td class=\"table__td\">Name</td>\n                        <td class=\"table__td\">Description</td>\n                    </tr>\n                    <tr class=\"table__tr\">\n                        <td class=\"table__td\">".concat(datos.id, "</td>\n                        <td class=\"table__td\">").concat(datos.user, "</td>\n                        <td class=\"table__td\">").concat(datos.pass, "</td>\n                        <td class=\"table__td\">").concat(datos.name, "</td>\n                        <td class=\"table__td\">").concat(datos.descrip, "</td>\n                    </tr>\n                </table>");
-  return res.innerHTML = text;
-};
+  res.innerHTML = text;
+}
 
 function cleanInputs() {
   var input = document.getElementsByClassName('form__input');
