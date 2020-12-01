@@ -1,24 +1,19 @@
+import 'regenerator-runtime/runtime';
 const search = document.querySelector('#search');
 const res = document.querySelector('#res');
 
-const isResponseOk = (response) => {
+async function request (url) {
+    const response = await fetch (url);
     if (!response.ok) {
         throw new Error(response.status);
     }
-    return response.json();
+    const json = await response.json();
+    const dataParse = await searchUser(json);
+    return dataParse;
 }
 
-search.addEventListener('click', () => {         
-    fetch('/static/users.json')
-        .then(function (response) {
-            return isResponseOk(response);
-        })
-        .then(function (data) {
-            searchUser(data);
-        })
-        .catch(function (err) {
-            res.innerHTML = `ERROR: ${err.message}`;
-        });
+search.addEventListener('click', () => { 
+    request('/static/users.json');
 });
 
 function searchUser (dataParse) {
