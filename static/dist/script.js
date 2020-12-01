@@ -744,57 +744,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var search = document.querySelector('#search');
 var res = document.querySelector('#res');
+search.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+  var response, json, dataParse;
+  return regeneratorRuntime.wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return fetch('/static/users.json');
 
-function request(_x) {
-  return _request.apply(this, arguments);
-}
+        case 2:
+          response = _context.sent;
 
-function _request() {
-  _request = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url) {
-    var response, json, dataParse;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return fetch(url);
+          if (response.ok) {
+            _context.next = 5;
+            break;
+          }
 
-          case 2:
-            response = _context.sent;
+          throw new Error(response.status);
 
-            if (response.ok) {
-              _context.next = 5;
-              break;
-            }
+        case 5:
+          _context.next = 7;
+          return response.json();
 
-            throw new Error(response.status);
+        case 7:
+          json = _context.sent;
+          _context.next = 10;
+          return searchUser(json);
 
-          case 5:
-            _context.next = 7;
-            return response.json();
+        case 10:
+          dataParse = _context.sent;
+          return _context.abrupt("return", dataParse);
 
-          case 7:
-            json = _context.sent;
-            _context.next = 10;
-            return searchUser(json);
-
-          case 10:
-            dataParse = _context.sent;
-            return _context.abrupt("return", dataParse);
-
-          case 12:
-          case "end":
-            return _context.stop();
-        }
+        case 12:
+        case "end":
+          return _context.stop();
       }
-    }, _callee);
-  }));
-  return _request.apply(this, arguments);
-}
-
-search.addEventListener('click', function () {
-  request('/static/users.json');
-});
+    }
+  }, _callee);
+})));
 
 function searchUser(dataParse) {
   var nameUser = document.querySelector('#nameUser').value;

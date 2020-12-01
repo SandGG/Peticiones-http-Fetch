@@ -2,18 +2,14 @@ import 'regenerator-runtime/runtime';
 const search = document.querySelector('#search');
 const res = document.querySelector('#res');
 
-async function request (url) {
-    const response = await fetch (url);
+search.addEventListener('click', async function () { 
+    const response = await fetch ('/static/users.json');
     if (!response.ok) {
         throw new Error(response.status);
     }
     const json = await response.json();
     const dataParse = await searchUser(json);
-    return dataParse;
-}
-
-search.addEventListener('click', () => { 
-    request('/static/users.json');
+    return dataParse;  
 });
 
 function searchUser (dataParse) {
