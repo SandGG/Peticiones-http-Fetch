@@ -17,9 +17,11 @@ search.addEventListener('click', () => {
             return searchUser(data);
         })
         .catch(function (err) {
-            return res.innerHTML = `ERROR: ${err.message}`;
+            res.innerHTML = `ERROR: ${err.message}`;
         });
 });
+
+console.log('aa');
 
 function searchUser (dataParse) {
     let nameUser = document.querySelector('#nameUser').value;
@@ -29,10 +31,9 @@ function searchUser (dataParse) {
         if (nameUser == item.user && passUser == item.pass) {
             writeData(item);
             return;
-        } else {
-            res.innerHTML = '<p> Data not found </p>';
-        }
+        } 
     } 
+    res.innerHTML = '<p> Data not found </p>';
 }
 
 function writeData (datos) {

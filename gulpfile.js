@@ -23,8 +23,8 @@ function css (){
 }
 
 function watch () {
-    gulp.watch('/scripts/*.js', js); 
-    gulp.watch('/styles/*.scss', css);
+    gulp.watch('scripts/*.js', js); 
+    gulp.watch('styles/*.scss', css);
 }
 
 exports.default = gulp.series(js, css);

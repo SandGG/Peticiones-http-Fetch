@@ -24,9 +24,10 @@ search.addEventListener('click', function () {
   }).then(function (data) {
     return searchUser(data);
   })["catch"](function (err) {
-    return res.innerHTML = "ERROR: ".concat(err.message);
+    res.innerHTML = "ERROR: ".concat(err.message);
   });
 });
+console.log('aa');
 
 function searchUser(dataParse) {
   var nameUser = document.querySelector('#nameUser').value;
@@ -42,8 +43,6 @@ function searchUser(dataParse) {
       if (nameUser == item.user && passUser == item.pass) {
         writeData(item);
         return;
-      } else {
-        res.innerHTML = '<p> Data not found </p>';
       }
     }
   } catch (err) {
@@ -51,6 +50,8 @@ function searchUser(dataParse) {
   } finally {
     _iterator.f();
   }
+
+  res.innerHTML = '<p> Data not found </p>';
 }
 
 function writeData(datos) {
