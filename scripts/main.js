@@ -8,8 +8,7 @@ search.addEventListener('click', async function () {
         throw new Error(response.status);
     }
     const json = await response.json();
-    const dataParse = await searchUser(json);
-    return dataParse;  
+    searchUser(json);
 });
 
 function searchUser (dataParse) {

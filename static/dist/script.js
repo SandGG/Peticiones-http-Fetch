@@ -745,7 +745,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var search = document.querySelector('#search');
 var res = document.querySelector('#res');
 search.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-  var response, json, dataParse;
+  var response, json;
   return regeneratorRuntime.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -769,14 +769,9 @@ search.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/re
 
         case 7:
           json = _context.sent;
-          _context.next = 10;
-          return searchUser(json);
+          searchUser(json);
 
-        case 10:
-          dataParse = _context.sent;
-          return _context.abrupt("return", dataParse);
-
-        case 12:
+        case 9:
         case "end":
           return _context.stop();
       }
