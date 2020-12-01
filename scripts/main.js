@@ -14,14 +14,12 @@ search.addEventListener('click', () => {
             return isResponseOk(response);
         })
         .then(function (data) {
-            return searchUser(data);
+            searchUser(data);
         })
         .catch(function (err) {
             res.innerHTML = `ERROR: ${err.message}`;
         });
 });
-
-console.log('aa');
 
 function searchUser (dataParse) {
     let nameUser = document.querySelector('#nameUser').value;

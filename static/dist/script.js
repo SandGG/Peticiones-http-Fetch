@@ -22,12 +22,11 @@ search.addEventListener('click', function () {
   fetch('/static/users.json').then(function (response) {
     return isResponseOk(response);
   }).then(function (data) {
-    return searchUser(data);
+    searchUser(data);
   })["catch"](function (err) {
     res.innerHTML = "ERROR: ".concat(err.message);
   });
 });
-console.log('aa');
 
 function searchUser(dataParse) {
   var nameUser = document.querySelector('#nameUser').value;
